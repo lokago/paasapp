@@ -41,6 +41,7 @@ The following table lists the configurable parameters of the Hadoop chart and th
 | `yarn.nodeManager.replicas`                       | Number of YARN NodeManager replicas                                                | `2`                                                              |
 | `yarn.nodeManager.parallelCreate`                 | Create all nodeManager statefulset pods in parallel (K8S 1.7+)                     | `false`                                                          |
 | `yarn.nodeManager.resources`                      | Resource limits and requests for YARN NodeManager pods                             | `requests:memory=2048Mi,cpu=1000m,limits:memory=2048Mi,cpu=1000m`|
+| `hive.enabled`                                    | Enable Hive                                                                        | `false` 
 | `persistence.nameNode.enabled`                    | Enable/disable persistent volume                                                   | `false`                                                          | 
 | `persistence.nameNode.storageClass`               | Name of the StorageClass to use per your volume provider                           | `-`                                                              |
 | `persistence.nameNode.accessMode`                 | Access mode for the volume                                                         | `ReadWriteOnce`                                                  |

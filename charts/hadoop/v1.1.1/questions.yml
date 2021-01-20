@@ -173,7 +173,7 @@ questions:
     max: 32767
     show_if: "ingress.enabled=false"
     label: Zeppelin NodePort Number
-- variable: hadoop.hive.enabled
+- variable: hive.enabled
   default: "false"
   description: "Enable hadoop hive function"
   type: boolean
