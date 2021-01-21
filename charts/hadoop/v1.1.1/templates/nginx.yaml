@@ -1,4 +1,4 @@
-{{- if .Values.hadoop.hive.enabled -}}
+{{- if .Values.hive.enabled -}}
 apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -18,25 +18,3 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
-          volumeMounts:
-            - mountPath: /mnt/temp
-              name: temp
-      volumes:
-        - name: temp
-          persistentVolumeClaim:
-            claimName: temp
----
-{{- if .Values.hadoop.hive.enabled -}}
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-service-nodeport
-spec:
-  ports:
-    - port: 8000
-      targetPort: 80
-      protocol: TCP
-      nodePort: 32143
-  type: NodePort
-  selector:
-    name: nginx
