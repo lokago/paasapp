@@ -3,7 +3,7 @@
 Expand the name of the chart.
 */}}
 {{- define "hadoop.hive" -}}
-{{- default "hadoop.hive" -}}
+{{- default "hadoop-hive" -}}
 {{- end -}}
 
 {{- define "hadoop.name" -}}
