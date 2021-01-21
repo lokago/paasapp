@@ -16,7 +16,7 @@ data:
 
     # Directory to find config artifacts
     CONFIG_DIR="/tmp/hadoop-config"
-    HIVE_CONFIG_DIR="/tmp/hadoop-config"
+    HIVE_CONFIG_DIR="/tmp/hive-config"
 
     # Copy config files from volume mount
 
@@ -32,9 +32,12 @@ data:
     # installing libraries if any - (resource urls added comma separated to the ACP system variable)
     cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; curl -LO $cp ; done; cd -
 
-    . /tmp/hive-config/config.sh
     if [[ "${HOSTNAME}" =~ "hive" ]]; then
-      . /tmp/hive-config/config.sh
+      mkdir -p /hive/aaaaaaaaaaaaaaaaaaaa
+      cp ${HIVE_CONFIG_DIR}/config.sh $HADOOP_PREFIX/sbin/
+      cd $HADOOP_PREFIX/sbin
+      chmod +x config.sh
+      . config.sh
     fi
 
     if [[ "${HOSTNAME}" =~ "hdfs-nn" ]]; then
