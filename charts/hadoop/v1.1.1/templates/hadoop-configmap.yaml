@@ -33,7 +33,7 @@ data:
     cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; curl -LO $cp ; done; cd -
 
     if [[ "${HOSTNAME}" =~ "hive" ]]; then
-      . ${HIVE_CONFIG_DIR}/config.sh
+      . /tmp/hadoop-config/config.sh
     fi
 
     if [[ "${HOSTNAME}" =~ "hdfs-nn" ]]; then
