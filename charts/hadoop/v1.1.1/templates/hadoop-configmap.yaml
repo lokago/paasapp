@@ -36,7 +36,7 @@ data:
       mkdir -p /hive/aaaaaaaaaaaaaaaaaaaa
       cp ${HIVE_CONFIG_DIR}/config.sh $HADOOP_PREFIX/sbin/
       cd $HADOOP_PREFIX/sbin
-      chmod +x config.sh
+      chmod a+rwx config.sh
       . config.sh
     fi
 
