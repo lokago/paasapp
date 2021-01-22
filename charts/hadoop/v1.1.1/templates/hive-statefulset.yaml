@@ -51,17 +51,15 @@ spec:
       - name: hive
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        volumeMounts:
+          - name: hadoop-config
+            mountPath: /tmp/hadoop-config
+          - name: hive-config
+            mountPath: /tmp/hive-config
         command:
-        - "/bin/bash"
-        - "/tmp/hadoop-config/bootstrap.sh"
-        - "-d"
+        - ". /tmp/hadoop-config/bootstrap.sh"
         resources:
 {{ toYaml .Values.hdfs.nameNode.resources | indent 10 }}
-        volumeMounts:
-        - name: hadoop-config
-          mountPath: /tmp/hadoop-config
-        - name: hive-config
-          mountPath: /tmp/hive-config
       volumes:
       - name: hadoop-config
         configMap:
