@@ -37,7 +37,7 @@ data:
       cp ${HIVE_CONFIG_DIR}/config.sh $HADOOP_PREFIX/sbin/
       cd $HADOOP_PREFIX/sbin
       chmod a+rwx config.sh
-      . config.sh
+      source config.sh
     fi
 
     if [[ "${HOSTNAME}" =~ "hdfs-nn" ]]; then
