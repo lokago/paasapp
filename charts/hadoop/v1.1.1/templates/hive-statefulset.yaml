@@ -53,7 +53,8 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         command:
         - "/bin/bash"
-        - ". /tmp/hadoop-config/bootstrap.sh"
+        - "-c"
+        - "/tmp/hadoop-config/bootstrap.sh"
         resources:
 {{ toYaml .Values.hdfs.nameNode.resources | indent 10 }}
         volumeMounts:
