@@ -33,6 +33,9 @@ spec:
             - name: hive-config
               mountPath: /tmp/hive-config
       volumes:
+      - name: hadoop-config
+        configMap:
+          name: {{ include "hadoop.fullname" . }}
       - name: hive-config
         configMap:
           name: {{ include "hadoop.hive" . }}
