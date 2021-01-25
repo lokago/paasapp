@@ -30,7 +30,7 @@ spec:
       - name: hive
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-        command: ["/bin/bash","-c","chmod a+rwx /tmp/hive-config/hive-config.sh; /tmp/hive-config/hive-config.sh"]
+        command: ["/bin/bash","-c","sudo chmod a+rwx /tmp/hive-config/hive-config.sh; /tmp/hive-config/hive-config.sh"]
         volumeMounts:
         - name: hive-config
           mountPath: /tmp/hive-config
