@@ -10,6 +10,8 @@ data:
   bootstrap.sh: |
     #!/bin/bash
 
+    echo "##############################################################"
+
     : ${HADOOP_PREFIX:=/usr/local/hadoop}
 
     . $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
