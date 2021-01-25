@@ -31,7 +31,7 @@ spec:
         image: 172.80.120.3/library/busybox:latest
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         command:
-        - "/bin/bash"
+        - "/bin/sh"
         - "/tmp/hive-config/hive-config.sh"
         - "-d"
         volumeMounts:
