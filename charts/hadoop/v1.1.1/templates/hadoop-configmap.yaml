@@ -36,7 +36,7 @@ data:
 
     if [[ "${HOSTNAME}" =~ "hive" ]]; then
       mkdir -p /hive/aaaaaaaaaaaaaaaaaaaa
-      cp ${HIVE_CONFIG_DIR}/config.sh $HADOOP_PREFIX/sbin/
+      cp ${HIVE_CONFIG_DIR}/hive-config.sh $HADOOP_PREFIX/sbin/
       cd $HADOOP_PREFIX/sbin
       chmod a+rwx hive-config.sh
       echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
