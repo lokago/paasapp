@@ -47,12 +47,26 @@ spec:
                   component: hive
         {{- end }}
       terminationGracePeriodSeconds: 0
-      containers:
+      initContainers:
         - name: init-hive
           image: 172.80.120.3/library/busybox:latest
+          command: ["/bin/sh","-c","/tmp/hive-config/hive-config.sh"]
           volumeMount:
             - name: hive-config
               mountPath: /tmp/hive-config
+      containers:
+      - name: hive
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        command:
+        - "/bin/bash"
+        - "/tmp/hadoop-config/bootstrap.sh"
+        - "-d"
+        resources:
+{{ toYaml .Values.hdfs.nameNode.resources | indent 10 }}
+        volumeMounts:
+        - name: hadoop-config
+          mountPath: /tmp/hadoop-config
       volumes:
       - name: hadoop-config
         configMap:
