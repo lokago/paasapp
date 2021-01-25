@@ -32,7 +32,8 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         command:
           - "/bin/bash"
-          - "/tmp/hive-config/hive-config.sh"
+          - "/tmp/hadoop-config/bootstrap.sh"
+          - "-d"
         volumeMounts:
         - name: hive-config
           mountPath: /tmp/hive-config
