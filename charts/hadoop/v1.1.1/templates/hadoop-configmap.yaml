@@ -34,14 +34,14 @@ data:
     # installing libraries if any - (resource urls added comma separated to the ACP system variable)
     cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; curl -LO $cp ; done; cd -
 
-    if [[ "${HOSTNAME}" =~ "hive" ]]; then
-      mkdir -p /hive/aaaaaaaaaaaaaaaaaaaa
-      cp ${HIVE_CONFIG_DIR}/hive-config.sh $HADOOP_PREFIX/sbin/
-      cd $HADOOP_PREFIX/sbin
-      chmod a+rwx hive-config.sh
-      echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-      . hive-config.sh
-    fi
+#    if [[ "${HOSTNAME}" =~ "hive" ]]; then
+#      mkdir -p /hive/aaaaaaaaaaaaaaaaaaaa
+#      cp ${HIVE_CONFIG_DIR}/hive-config.sh $HADOOP_PREFIX/sbin/
+#      cd $HADOOP_PREFIX/sbin
+#      chmod a+rwx hive-config.sh
+#      echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+#      . hive-config.sh
+#    fi
 
     if [[ "${HOSTNAME}" =~ "hdfs-nn" ]]; then
       mkdir -p /root/hdfs/namenode
