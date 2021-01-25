@@ -47,6 +47,13 @@ spec:
                   component: hive
         {{- end }}
       terminationGracePeriodSeconds: 0
+      initContainers:
+        - name: init-hive
+          image: 172.80.120.3/library/busybox:latest
+          command: [". /tmp/hive-config/hive-config.sh"]
+          volumeMount:
+            - name: hive-config
+              mountPath: /tmp/hive-config
       containers:
       - name: hive
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -60,8 +67,6 @@ spec:
         volumeMounts:
         - name: hadoop-config
           mountPath: /tmp/hadoop-config
-        - name: hive-config
-          mountPath: /tmp/hive-config
       volumes:
       - name: hadoop-config
         configMap:
