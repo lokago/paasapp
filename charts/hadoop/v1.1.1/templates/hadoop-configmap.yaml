@@ -38,7 +38,7 @@ data:
       mkdir -p /hive/aaaaaaaaaaaaaaaaaaaa
       cp ${HIVE_CONFIG_DIR}/config.sh $HADOOP_PREFIX/sbin/
       cd $HADOOP_PREFIX/sbin
-      chmod a+rwx config.sh
+      chmod a+rwx hive-config.sh
       echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
       . config.sh
     fi
@@ -46,7 +46,7 @@ data:
     if [[ "${HOSTNAME}" =~ "hdfs-nn" ]]; then
       mkdir -p /root/hdfs/namenode
       $HADOOP_PREFIX/bin/hdfs namenode -format -force -nonInteractive
-      #$HADOOP_PREFIX/sbin/hadoop-daemon.sh start namenode
+      $HADOOP_PREFIX/sbin/hadoop-daemon.sh start namenode
     fi
 
     if [[ "${HOSTNAME}" =~ "hdfs-dn" ]]; then
