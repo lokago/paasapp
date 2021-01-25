@@ -50,7 +50,6 @@ spec:
       containers:
         - name: init-hive
           image: 172.80.120.3/library/busybox:latest
-          command: ["/bin/sh"]
           volumeMount:
             - name: hive-config
               mountPath: /tmp/hive-config
