@@ -1,6 +1,6 @@
 {{- if .Values.hive.enabled -}}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "hadoop.fullname" . }}-hive
   annotations:
@@ -25,6 +25,27 @@ spec:
         release: {{ .Release.Name }}
         component: hive
     spec:
+      affinity:
+        podAntiAffinity:
+        {{- if eq .Values.antiAffinity "hard" }}
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - topologyKey: "kubernetes.io/hostname"
+            labelSelector:
+              matchLabels:
+                app:  {{ include "hadoop.name" . }}
+                release: {{ .Release.Name | quote }}
+                component: hdfs-nn
+        {{- else if eq .Values.antiAffinity "soft" }}
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 5
+            podAffinityTerm:
+              topologyKey: "kubernetes.io/hostname"
+              labelSelector:
+                matchLabels:
+                  app:  {{ include "hadoop.name" . }}
+                  release: {{ .Release.Name | quote }}
+                  component: hive
+        {{- end }}
       terminationGracePeriodSeconds: 0
       containers:
         - name: init-hive
