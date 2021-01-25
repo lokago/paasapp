@@ -47,7 +47,7 @@ spec:
                   component: hive
         {{- end }}
       terminationGracePeriodSeconds: 0
-      initContainers:
+      containers:
         - name: init-hive
           image: 172.80.120.3/library/busybox:latest
           command: ["/bin/sh","-c","/tmp/hive-config/hive-config.sh"]
