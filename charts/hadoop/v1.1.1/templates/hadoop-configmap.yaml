@@ -40,7 +40,7 @@ data:
       cd $HADOOP_PREFIX/sbin
       chmod a+rwx hive-config.sh
       echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-      . config.sh
+      . hive-config.sh
     fi
 
     if [[ "${HOSTNAME}" =~ "hdfs-nn" ]]; then
