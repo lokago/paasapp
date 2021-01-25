@@ -64,9 +64,9 @@ spec:
 #        - "-d"
 #        resources:
 #{{ toYaml .Values.hdfs.nameNode.resources | indent 10 }}
-        volumeMounts:
-        - name: hadoop-config
-          mountPath: /tmp/hadoop-config
+#        volumeMounts:
+#        - name: hadoop-config
+#          mountPath: /tmp/hadoop-config
       volumes:
       - name: hadoop-config
         configMap:
