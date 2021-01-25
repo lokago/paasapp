@@ -27,13 +27,10 @@ spec:
     spec:
       terminationGracePeriodSeconds: 0
       containers:
-      - name: init-hive
+      - name: hive
         image: 172.80.120.3/library/busybox:latest
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-        command:
-        - "/bin/sh"
-        - "/tmp/hive-config/hive-config.sh"
-        - "-d"
+        command: ["/bin/sh","-c","/tmp/hive-config/hive-config.sh"]
         volumeMounts:
         - name: hive-config
           mountPath: /tmp/hive-config
