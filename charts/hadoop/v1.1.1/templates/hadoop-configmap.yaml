@@ -10,7 +10,7 @@ data:
   bootstrap.sh: |
     #!/bin/bash
 
-    echo "##############################################################"
+    echo "##############################################################!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
     : ${HADOOP_PREFIX:=/usr/local/hadoop}
 
@@ -43,11 +43,11 @@ data:
       . config.sh
     fi
 
-    if [[ "${HOSTNAME}" =~ "hdfs-nn" ]]; then
-      mkdir -p /root/hdfs/namenode
-      $HADOOP_PREFIX/bin/hdfs namenode -format -force -nonInteractive
-      $HADOOP_PREFIX/sbin/hadoop-daemon.sh start namenode
-    fi
+#    if [[ "${HOSTNAME}" =~ "hdfs-nn" ]]; then
+#      mkdir -p /root/hdfs/namenode
+#      $HADOOP_PREFIX/bin/hdfs namenode -format -force -nonInteractive
+#      $HADOOP_PREFIX/sbin/hadoop-daemon.sh start namenode
+#    fi
 
     if [[ "${HOSTNAME}" =~ "hdfs-dn" ]]; then
       mkdir -p /root/hdfs/datanode
