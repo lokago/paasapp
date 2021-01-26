@@ -4,7 +4,6 @@ kind: ReplicationController
 metadata:
   name: nginx-controller
 spec:
-  serviceName: nginx-service
   replicas: 1
   selector:
     name: nginx
@@ -20,6 +19,18 @@ spec:
           ports:
             - name: http
               containerPort: 80
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /index.html
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              port: http
+              path: /index.html
+            initialDelaySeconds: 5
+            periodSeconds: 5
           volumeMounts:
             - name: hive-config
               mountPath: /tmp/hive-config
