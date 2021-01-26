@@ -1,22 +1,16 @@
 {{- if .Values.hive.enabled -}}
-apiVersion: apps/v1
-kind: StatefulSet
+apiVersion: v1
+kind: ReplicationController
 metadata:
   name: nginx-controller
 spec:
   replicas: 1
   selector:
-    matchLabels:
-      app: {{ include "hadoop.name" . }}
-      release: {{ .Release.Name }}
-      component: nginx
-  serviceName: {{ include "hadoop.fullname" . }}-nginx
+    name: nginx
   template:
     metadata:
       labels:
-        app: {{ include "hadoop.name" . }}
-        release: {{ .Release.Name }}
-        component: nginx
+        name: nginx
     spec:
       containers:
         - name: nginx
@@ -25,10 +19,6 @@ spec:
           ports:
             - name: http
               containerPort: 80
-          command:
-            - "/bin/bash"
-            - "/tmp/hive-config/hive-config.sh"
-            - "-d"
           readinessProbe:
             httpGet:
               port: http
