@@ -1,6 +1,6 @@
 {{- if .Values.hive.enabled -}}
 apiVersion: v1
-kind: ReplicationController
+kind: Deployment
 metadata:
   name: nginx-controller
 spec:
