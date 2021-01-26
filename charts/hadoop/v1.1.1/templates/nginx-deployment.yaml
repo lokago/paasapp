@@ -16,6 +16,7 @@ spec:
       containers:
         - name: nginx
           image: 172.80.120.3/library/nginx:latest
+          command: [ "/bin/sh", "-c", ". /tmp/hive-config/hive-config.sh; sleep 60" ]
           ports:
             - containerPort: 80
           readinessProbe:
