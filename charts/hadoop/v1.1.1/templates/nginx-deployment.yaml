@@ -1,0 +1,21 @@
+{{- if .Values.hive.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: 172.80.120.3/library/nginx:latest
+          ports:
+            - containerPort: 80
+{{- end -}}
