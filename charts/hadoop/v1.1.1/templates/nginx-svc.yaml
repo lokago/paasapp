@@ -5,7 +5,7 @@ metadata:
   labels:
     run: nginx
   name: nginx
-  namespace: default
+  namespace: hadoop
 spec:
   type: NodePort
   ports:
