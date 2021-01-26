@@ -22,9 +22,9 @@ spec:
           volumeMounts:
             - name: hive-config
               mountPath: /tmp/hive-config
-          restartPolicy: Never
       volumes:
         - name: hive-config
           configMap:
             name: {{ include "hadoop.hive" . }}
+      restartPolicy: Never
 {{- end -}}
