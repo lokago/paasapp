@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
-          command: ['bash', '-c', 'echo Heqqqqqqqqqqqqqqqqqq']
+          command: ['sh', '-c', 'echo Heqqqqqqqqqqqqqqqqqq']
           volumeMounts:
             - name: hive-config
               mountPath: /tmp/hive-config
