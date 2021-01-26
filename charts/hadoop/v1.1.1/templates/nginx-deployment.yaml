@@ -22,6 +22,7 @@ spec:
           volumeMounts:
             - name: hive-config
               mountPath: /tmp/hive-config
+          restartPolicy: Never
       volumes:
         - name: hive-config
           configMap:
