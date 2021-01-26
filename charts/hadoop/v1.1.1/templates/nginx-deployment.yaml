@@ -18,6 +18,18 @@ spec:
           image: 172.80.120.3/library/nginx:latest
           ports:
             - containerPort: 80
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            livenessProbe:
+              httpGet:
+                port: http
+                path: /
+              initialDelaySeconds: 5
+              periodSeconds: 5
           volumeMounts:
             - name: hive-config
               mountPath: /tmp/hive-config
