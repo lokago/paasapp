@@ -18,4 +18,11 @@ spec:
           image: 172.80.120.3/library/nginx:latest
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: hive-config
+              mountPath: /tmp/hive-config
+      volumes:
+        - name: hive-config
+          configMap:
+            name: {{ include "hadoop.hive" . }}
 {{- end -}}
