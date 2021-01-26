@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
-          command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
+          command: ['bash', '-c', 'cd /tmp/hive-config; echo Heqqqqqqqqqqqqqqqqqq']
           volumeMounts:
             - name: hive-config
               mountPath: /tmp/hive-config
