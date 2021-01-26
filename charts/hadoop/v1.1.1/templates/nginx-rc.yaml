@@ -4,7 +4,7 @@ kind: ReplicationController
 metadata:
   name: nginx-controller
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     name: nginx
   template:
@@ -17,13 +17,5 @@ spec:
           image: 172.80.120.3/library/nginx/nginx:1.16.0
           imagePullPolicy: IfNotPresent
           ports:
-            - name: http
-              containerPort: 80
-          volumeMounts:
-            - name: hive-config
-              mountPath: /tmp/hive-config
-      volumes:
-        - name: hive-config
-          configMap:
-            name: {{ include "hadoop.hive" . }}
+            - containerPort: 80
 {{- end -}}
