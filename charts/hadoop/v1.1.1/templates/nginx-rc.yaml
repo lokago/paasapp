@@ -25,12 +25,12 @@ spec:
               port: http
               path: /index.html
             initialDelaySeconds: 5
-            periodSeconds: 5
+            periodSeconds: 2
           livenessProbe:
             httpGet:
               port: http
               path: /index.html
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 5
           volumeMounts:
             - name: hive-config
