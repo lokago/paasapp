@@ -6,7 +6,11 @@ metadata:
 spec:
   replicas: 1
   selector:
-    name: nginx
+    matchLabels:
+      app: {{ include "hadoop.name" . }}
+      release: {{ .Release.Name }}
+      component: nginx
+  serviceName: {{ include "hadoop.fullname" . }}-nginx
   template:
     metadata:
       labels:
