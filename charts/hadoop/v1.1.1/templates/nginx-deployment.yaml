@@ -19,4 +19,11 @@ spec:
           ports:
             - containerPort: 80
           command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
+          volumeMounts:
+            - name: hive-config
+              mountPath: /tmp/hive-config
+      volumes:
+        - name: hive-config
+          configMap:
+            name: {{ include "hadoop.hive" . }}
 {{- end -}}
