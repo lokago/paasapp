@@ -1,6 +1,6 @@
 {{- if .Values.hive.enabled -}}
 apiVersion: apps/v1
-kind: Deployment
+kind: Pod
 metadata:
   name: nginx-controller
 spec:
