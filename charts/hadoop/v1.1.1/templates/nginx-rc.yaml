@@ -18,19 +18,19 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
-          command: ['sh', '-c', 'echo Heqqqqqqqqqqqqqqqqqq']
-          readinessProbe:
-            httpGet:
-              path: /index.html
-              port: 80
-            initialDelaySeconds: 5
-            timeoutSeconds: 2
-          livenessProbe:
-            httpGet:
-              path: /index.html
-              port: 80
-            initialDelaySeconds: 10
-            timeoutSeconds: 2
+#          command: ['sh', '-c', 'echo Heqqqqqqqqqqqqqqqqqq']
+#          readinessProbe:
+#            httpGet:
+#              path: /index.html
+#              port: 80
+#            initialDelaySeconds: 5
+#            timeoutSeconds: 2
+#          livenessProbe:
+#            httpGet:
+#              path: /index.html
+#              port: 80
+#            initialDelaySeconds: 10
+#            timeoutSeconds: 2
           volumeMounts:
             - name: hive-config
               mountPath: /tmp/hive-config
