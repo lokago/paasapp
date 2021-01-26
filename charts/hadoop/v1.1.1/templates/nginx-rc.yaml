@@ -17,20 +17,15 @@ spec:
           image: 172.80.120.3/library/nginx/nginx:1.16.0
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 80
-#          command: ['sh', '-c', 'echo Heqqqqqqqqqqqqqqqqqq']
-#          readinessProbe:
-#            httpGet:
-#              path: /index.html
-#              port: 80
-#            initialDelaySeconds: 5
-#            timeoutSeconds: 2
-#          livenessProbe:
-#            httpGet:
-#              path: /index.html
-#              port: 80
-#            initialDelaySeconds: 10
-#            timeoutSeconds: 2
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /index.html
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          command: ['sh', '-c', 'echo Heqqqqqqqqqqqqqqqqqq']
           volumeMounts:
             - name: hive-config
               mountPath: /tmp/hive-config
