@@ -25,6 +25,12 @@ spec:
               path: /index.html
             initialDelaySeconds: 5
             periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              port: http
+              path: /index.html
+            initialDelaySeconds: 5
+            periodSeconds: 5
           command: ['sh', '-c', 'echo Heqqqqqqqqqqqqqqqqqq']
           volumeMounts:
             - name: hive-config
