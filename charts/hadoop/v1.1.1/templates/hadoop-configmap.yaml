@@ -37,7 +37,7 @@ data:
     if [[ "${HOSTNAME}" =~ "hive" ]]; then
       echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
       $HIVE_HOME/bin/hive --version
-      cp /tmp/hive-conf/hive-site.xml /usr/local/hive-3.1.2/conf/
+      cp /tmp/hive-config/hive-site.xml /usr/local/hive-3.1.2/conf/
     fi
 
     if [[ "${HOSTNAME}" =~ "hdfs-nn" ]]; then
