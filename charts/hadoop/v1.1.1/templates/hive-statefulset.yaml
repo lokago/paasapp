@@ -30,6 +30,10 @@ spec:
       - name: hive
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/bash", "-c", "echo 'PATH=$PATH:$HIVE_HOME/bin'>>/etc/profile"]
         command:
           - "/bin/bash"
           - "/tmp/hadoop-config/bootstrap.sh"
