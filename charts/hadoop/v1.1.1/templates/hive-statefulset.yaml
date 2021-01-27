@@ -1,6 +1,6 @@
 {{- if .Values.hive.enabled -}}
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Pod
 metadata:
   name: {{ include "hadoop.fullname" . }}-hive
   annotations:
@@ -17,7 +17,6 @@ spec:
       release: {{ .Release.Name }}
       component: hive
   serviceName: {{ include "hadoop.fullname" . }}-hive
-  replicas: 1
   template:
     metadata:
       labels:
