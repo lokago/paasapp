@@ -18,6 +18,10 @@ spec:
           image: 172.80.120.3/library/nginx:latest
           ports:
             - containerPort: 80
+          command:
+            - "/bin/bash"
+            - "/tmp/hive-config/hive-config.sh"
+            - "-d"
           readinessProbe:
             httpGet:
               port: 80
