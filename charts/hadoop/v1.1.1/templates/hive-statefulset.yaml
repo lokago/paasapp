@@ -34,6 +34,12 @@ spec:
           - "/bin/bash"
           - "/tmp/hadoop-config/bootstrap.sh"
           - "-d"
+        env:
+        - name: HIVE_HOME
+          valueFrom:
+            configMapKeyRef:
+              name: {{ include "hadoop.hive" . }}
+              key: HIVE_HOME
         volumeMounts:
         - name: hive-config
           mountPath: /tmp/hive-config
