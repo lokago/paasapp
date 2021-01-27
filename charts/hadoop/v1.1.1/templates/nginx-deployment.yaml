@@ -21,7 +21,7 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
+                command: ["/bin/sh", "-c", ". /tmp/hive-config/hive-config.sh"]
           readinessProbe:
             httpGet:
               port: 80
