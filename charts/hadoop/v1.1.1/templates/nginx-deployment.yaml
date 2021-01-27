@@ -1,8 +1,8 @@
 {{- if .Values.hive.enabled -}}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: nginx-deployment
+  name: nginx-statefulset
 spec:
   replicas: 3
   selector:
