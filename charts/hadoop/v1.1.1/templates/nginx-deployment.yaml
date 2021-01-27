@@ -18,6 +18,10 @@ spec:
           image: 172.80.120.3/library/nginx:latest
           ports:
             - containerPort: 80
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "env"]
           readinessProbe:
             httpGet:
               port: 80

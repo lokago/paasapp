@@ -1,6 +1,6 @@
 {{- if .Values.hive.enabled -}}
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
   name: {{ include "hadoop.fullname" . }}-hive
   annotations:
@@ -17,6 +17,7 @@ spec:
       release: {{ .Release.Name }}
       component: hive
   serviceName: {{ include "hadoop.fullname" . }}-hive
+  replicas: 1
   template:
     metadata:
       labels:
@@ -29,6 +30,10 @@ spec:
       - name: hive
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+        command:
+          - "/bin/bash"
+          - "/tmp/hadoop-config/bootstrap.sh"
+          - "-d"
         volumeMounts:
         - name: hive-config
           mountPath: /tmp/hive-config
