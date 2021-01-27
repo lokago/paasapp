@@ -50,10 +50,6 @@ spec:
       - name: hdfs-dn
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-        command:
-           - "/bin/bash"
-           - "/tmp/hadoop-config/bootstrap.sh"
-           - "-d"
         resources:
 {{ toYaml .Values.hdfs.dataNode.resources | indent 10 }}
         readinessProbe:
