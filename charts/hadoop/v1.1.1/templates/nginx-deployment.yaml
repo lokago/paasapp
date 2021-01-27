@@ -21,7 +21,7 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["/bin/sh", "-c", "env"]
+                command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
           readinessProbe:
             httpGet:
               port: 80
