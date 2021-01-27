@@ -37,6 +37,8 @@ spec:
         volumeMounts:
         - name: hive-config
           mountPath: /tmp/hive-config
+        - name: hadoop-config
+          mountPath: /tmp/hadoop-config
       volumes:
       - name: hadoop-config
         configMap:

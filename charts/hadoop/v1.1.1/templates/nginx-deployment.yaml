@@ -20,7 +20,7 @@ spec:
             - containerPort: 80
           command:
             - "/bin/bash"
-            - "/tmp/hive-config/hive-config.sh"
+            - "/tmp/hadoop-config/bootstrap.sh"
             - "-d"
           readinessProbe:
             httpGet:
@@ -37,8 +37,13 @@ spec:
           volumeMounts:
             - name: hive-config
               mountPath: /tmp/hive-config
+            - name: hadoop-config
+              mountPath: /tmp/hadoop-config
       volumes:
         - name: hive-config
           configMap:
             name: {{ include "hadoop.hive" . }}
+        - name: hadoop-config
+          configMap:
+            name: {{ include "hadoop.fullname" . }}
 {{- end -}}
