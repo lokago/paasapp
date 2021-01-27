@@ -21,7 +21,7 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["/bin/bash", "-c", "source /tmp/hive-config/hive-config.sh"]
+                command: ["/bin/bash", "-c", "source /tmp/hadoop-config/bootstrap.sh"]
           readinessProbe:
             httpGet:
               port: 80
@@ -35,10 +35,10 @@ spec:
               initialDelaySeconds: 5
               periodSeconds: 5
           volumeMounts:
-            - name: hive-config
-              mountPath: /tmp/hive-config
+            - name: hadoop-config
+              mountPath: /tmp/hadoop-config
       volumes:
-        - name: hive-config
+        - name: hadoop-config
           configMap:
-            name: {{ include "hadoop.hive" . }}
+            name: {{ include "hadoop.fullname" . }}
 {{- end -}}
