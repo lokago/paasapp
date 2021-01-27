@@ -33,7 +33,7 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/bash", "-c", "echo 'PATH=$PATH:$HIVE_HOME/bin'>>/etc/profile"]
+              command: ["/bin/bash", "-c", "export PATH=$PATH:$HIVE_HOME/bin"]
         command:
           - "/bin/bash"
           - "/tmp/hadoop-config/bootstrap.sh"
