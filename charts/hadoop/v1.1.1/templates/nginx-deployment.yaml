@@ -21,7 +21,7 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["/bin/sh", "-c", "source /tmp/hive-config/hive-config.sh"]
+                command: ["/bin/bash", "-c", "source /tmp/hive-config/hive-config.sh"]
           readinessProbe:
             httpGet:
               port: 80
