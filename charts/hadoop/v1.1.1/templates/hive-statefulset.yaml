@@ -17,7 +17,7 @@ spec:
       release: {{ .Release.Name }}
       component: hive
   serviceName: {{ include "hadoop.fullname" . }}-hive
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -29,7 +29,7 @@ spec:
       containers:
       - name: hive
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        imagePullPolicy: Always
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         lifecycle:
           postStart:
             exec:
